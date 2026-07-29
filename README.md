@@ -31,46 +31,8 @@ vim ~/.vimrc
 ```
 
 
-  内容<br>
-```bash
+  このファイルを編集し、vimを使いやすいように設定をします。
 
-set number
-set expandtab
-set tabstop=2
-set shiftwidth=2
-
-set autoindent
-
-set fenc=utf-8
-set nobackup
-set noswapfile
-
-set autoread
-set hidden
-set showcmd
-
-set cursorline
-set cursorcolumn
-set virtualedit=onemore
-set smartindent
-set showmatch
-set laststatus=2
-set wildmode=list:longest
-
-nnoremap j gj
-nnoremap k gk
-
-syntax enable
-
-set list listchars=tab:\▶\-
-
-set ignorecase
-set smartcase
-set incsearch
-set wrapscan
-set hlsearch
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-```
 
 ---
 3.Dockerのインストールと自動起動化をします。<br>
