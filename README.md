@@ -6,15 +6,14 @@
 `sudo yum install vim -y`
 
 <br>
-
-
+---
 2.screenをインストールします。<br>
   以下コードを実行します。<br>
 `sudo yum install screen -y`
 
 <br>
 
-
+---
 3.Dockerのインストールと自動起動化をします。<br>
   以下コードを実行します。<br>
 ```
@@ -29,8 +28,7 @@ sudo systemctl enable docker
 
 <br>
 
-
-
+---
 4.Docker Composeをインストールします。<br>
   以下コードを実行します。<br>
 ```
