@@ -96,6 +96,7 @@ server {
 
 <br>
 
+
 ---
 6.compose.yml編集します。<br>
   以下コードを実行します。<br>
@@ -198,9 +199,8 @@ CREATE TABLE `bbs_entries` (
 ```
 <br>
   画像を保存するパス収納用カラムの追加<br>
-```bash
-ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
-```
+
+``ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;``
 <br>
 
 ---
