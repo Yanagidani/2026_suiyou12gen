@@ -48,17 +48,17 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
   以下コードを実行します。<br>
 
 <br>
-  設定ファイル用のディレクトリ
+  設定ファイル用のディレクトリ<br>
 ```
 mkdir nginx
 mkdir nginx/conf.d
 ```
 <br>
-  設定ファイルを作成
+  設定ファイルを作成<br>
 `vim nginx/conf.d/default.conf`
 
 <br>
-  内容
+  内容<br>
 ```
 server {
     listen       0.0.0.0:80;
@@ -84,7 +84,7 @@ server {
 
 6.compose.yml編集します。<br>
   以下コードを実行します。<br>
-`vim compose.yml`
+`vim compose.yml`<br>
 ```
 services:
   web:
@@ -173,7 +173,8 @@ CREATE TABLE `bbs_entries` (
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
-  画像を保存するパス収納用カラムの追加
+<br>
+  画像を保存するパス収納用カラムの追加<br>
 ```
 ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
 ```
@@ -181,4 +182,3 @@ ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
 
 12.WebブラウザからサイトのURLを検索します。<br>
   `http://”ec2インスタンスのパブリックIPアドレス”/bbsimagetest.php`
-
