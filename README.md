@@ -150,9 +150,7 @@ vim public/bbsimagetest.php
 
 
   内容<br>
-
-リポジトリ内の内容を張り付け
-
+<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/public/bbsimagetest.php>
 
 
 ---
