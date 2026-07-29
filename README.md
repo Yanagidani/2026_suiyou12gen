@@ -6,6 +6,7 @@
 `sudo yum install vim -y`
 
 <br>
+
 ---
 2.screenをインストールします。<br>
   以下コードを実行します。<br>
@@ -16,7 +17,7 @@
 ---
 3.Dockerのインストールと自動起動化をします。<br>
   以下コードを実行します。<br>
-```
+```bash
 sudo yum install -y docker
 sudo systemctl start docker
 sudo systemctl enable docker
@@ -31,7 +32,7 @@ sudo systemctl enable docker
 ---
 4.Docker Composeをインストールします。<br>
   以下コードを実行します。<br>
-```
+```bash
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v5.1.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
@@ -53,14 +54,14 @@ v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです�
 
 <br>
 
-
+---
 5.nginxを使用しWebに配信する。<br>
   設定ファイル用のディレクトリ・ファイル・内容の作成をします。<br>
   以下コードを実行します。<br>
 
 <br>
   設定ファイル用のディレクトリ<br>
-```
+```bash
 mkdir nginx
 mkdir nginx/conf.d
 ```
@@ -72,7 +73,7 @@ mkdir nginx/conf.d
 
 <br>
   内容<br>
-```
+```bash
 server {
     listen       0.0.0.0:80;
     server_name  _;
@@ -95,10 +96,11 @@ server {
 
 <br>
 
+---
 6.compose.yml編集します。<br>
   以下コードを実行します。<br>
 `vim compose.yml`<br>
-```
+```bash
 services:
   web:
     image: nginx:latest
@@ -139,18 +141,21 @@ volumes:
 
 <br>
 
+---
 7.dockerを再起動します。<br>
   起動したままの場合はctrl+cで終了させ、以下コードを実行します。<br>
 `docker compose up`
 
 <br>
 
-
+---
 8.MySQLサーバーにmysqlコマンドで接続します。<br>
   以下コードを実行します。<br>
 `vim Dockerfile`
-  内容
-```
+
+
+  内容<br>
+```bash
 FROM php:8.4-fpm-alpine AS php
 
 RUN docker-php-ext-install pdo_mysql
@@ -160,26 +165,31 @@ RUN install -o www-data -g www-data -d /var/www/upload/image/
 
 <br>
 
+---
 9.掲示板サイトのファイルを作成します。<br>
   以下コードを実行します。<br>
 `vim public/bbsimagetest.php`
+
+
   内容<br>
-```
+```bash
 ここに内容を記述
 ```
 
 
 <br>
 
+---
 10.PHPからMySQLサーバーに接続します。<br>
   以下コードを実行します。<br>
 `docker compose exec mysql mysql example_db`
 
 <br>
 
+---
 11.テーブルを作成し、カラムを追加します。<br>
   以下コードを実行します。<br>
-```
+```bash
 CREATE TABLE `bbs_entries` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `body` TEXT NOT NULL,
@@ -188,10 +198,11 @@ CREATE TABLE `bbs_entries` (
 ```
 <br>
   画像を保存するパス収納用カラムの追加<br>
-```
+```bash
 ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
 ```
 <br>
 
+---
 12.WebブラウザからサイトのURLを検索します。<br>
   `http://”ec2インスタンスのパブリックIPアドレス”/bbsimagetest.php`
