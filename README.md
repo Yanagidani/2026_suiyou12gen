@@ -13,7 +13,67 @@ cd 2026_suiyou12gen
 
 
 ---
-2.Dockerのインストールと自動起動化をします。<br>
+2.screenをインストールし・screenの移動と仕様を変更します。<br>
+  以下コードを実行します。<br>
+```bash
+sudo yum install screen -y
+```
+
+
+```bash
+screen
+```
+
+
+  screenの仕様を変更します。<br>
+```bash
+vim ~/.vimrc
+```
+
+
+  内容<br>
+```bash
+
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set autoindent
+
+set fenc=utf-8
+set nobackup
+set noswapfile
+
+set autoread
+set hidden
+set showcmd
+
+set cursorline
+set cursorcolumn
+set virtualedit=onemore
+set smartindent
+set showmatch
+set laststatus=2
+set wildmode=list:longest
+
+nnoremap j gj
+nnoremap k gk
+
+syntax enable
+
+set list listchars=tab:\▶\-
+
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set hlsearch
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+```
+
+---
+3.Dockerのインストールと自動起動化をします。<br>
   以下コードを実行します。<br>
 ```bash
 sudo yum install -y docker
@@ -32,7 +92,7 @@ sudo usermod -a -G docker ec2-user
 
 
 ---
-3.Docker Composeをインストールし・起動します。<br>
+4.Docker Composeをインストールし・起動します。<br>
   以下コードを実行します。<br>
 ```bash
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
@@ -56,7 +116,7 @@ v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです�
 docker compose up
 ```
 ---
-4.PHPからMySQLサーバーに接続します。<br>
+5.PHPからMySQLサーバーに接続します。<br>
   以下コードを実行します。<br>
 ```bash
 docker compose exec mysql mysql example_db
@@ -65,7 +125,7 @@ docker compose exec mysql mysql example_db
 <br>
 
 ---
-5.テーブルを作成し、カラムを追加します。<br>
+6.テーブルを作成し、カラムを追加します。<br>
   以下コードを実行します。<br>
 ```bash
 CREATE TABLE `bbs_entries` (
@@ -83,7 +143,7 @@ ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
 <br>
 
 ---
-6.WebブラウザからサイトのURLを検索します。<br>
+7.WebブラウザからサイトのURLを検索します。<br>
 ```bash
 http://”ec2インスタンスのパブリックIPアドレス”/bbsimagetest.php
 ```
