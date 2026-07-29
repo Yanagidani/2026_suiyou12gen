@@ -84,7 +84,9 @@ sudo systemctl enable docker
 sudo usermod -a -G docker ec2-user
 ```
 
-<br>
+
+  一度exitでログアウトして入り直し設定を反映させる
+
 
 ---
 4.Docker Composeをインストールします。<br>
