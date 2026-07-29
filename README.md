@@ -83,8 +83,26 @@ vim nginx/conf.d/default.conf
 
 
   内容<br>
+```bash
+server {
+    listen       0.0.0.0:80;
+    server_name  _;
+    charset      utf-8;
 
-リポジトリ内の内容を張り付け
+    root /var/www/public;
+
+    location ~ \.php$ {
+        fastcgi_pass  php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include       fastcgi_params;
+    }
+
+    location /image/ {
+        root /var/www/upload;
+    }
+}
+```
 
 
 ---
@@ -96,7 +114,9 @@ vim compose.yml
 
 
 内容<br>
-リポジトリ内の内容を張り付け
+```
+https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml
+```
 
 
 ---
@@ -117,8 +137,9 @@ vim Dockerfile
 
 
   内容<br>
-
-リポジトリ内の内容を張り付け
+```
+https://github.com/Yanagidani/2026_suiyou12gen/blob/main/Dockerfile
+```
 
 
 <br>
