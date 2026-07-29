@@ -1,76 +1,19 @@
 # 手順書
 
 # 起動及び作成方法  <br>
-1.vimをインストールする <br>
+1.gitcloneをしてリポジトリの内容を持ってきます。 <br>
   以下コードを実行します。<br>
 ```bash
-sudo yum install vim -y
+sudo yum install vim git -y
+git clone <https://github.com/Yanagidani/2026_suiyou12gen.git>
+cd 2026_suiyou12gen
 ```
 
 <br>
 
----
-2.screenをインストールし・screenの移動と仕様を変更します。<br>
-  以下コードを実行します。<br>
-```bash
-sudo yum install screen -y
-```
-
-
-```bash
-screen
-```
-
-
-  screenの仕様を変更します。<br>
-```bash
-vim ~/.vimrc
-```
-
-
-  内容<br>
-```bash
-
-set number
-set expandtab
-set tabstop=2
-set shiftwidth=2
-
-set autoindent
-
-set fenc=utf-8
-set nobackup
-set noswapfile
-
-set autoread
-set hidden
-set showcmd
-
-set cursorline
-set cursorcolumn
-set virtualedit=onemore
-set smartindent
-set showmatch
-set laststatus=2
-set wildmode=list:longest
-
-nnoremap j gj
-nnoremap k gk
-
-syntax enable
-
-set list listchars=tab:\▶\-
-
-set ignorecase
-set smartcase
-set incsearch
-set wrapscan
-set hlsearch
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-```
 
 ---
-3.Dockerのインストールと自動起動化をします。<br>
+2.Dockerのインストールと自動起動化をします。<br>
   以下コードを実行します。<br>
 ```bash
 sudo yum install -y docker
@@ -89,7 +32,7 @@ sudo usermod -a -G docker ec2-user
 
 
 ---
-4.Docker Composeをインストールします。<br>
+3.Docker Composeをインストールし・起動します。<br>
   以下コードを実行します。<br>
 ```bash
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
@@ -107,119 +50,13 @@ docker compose version
 
 v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです。<br>
 
----
 
-
-5.作業用ディレクトリ・compose.ymlを作成し起動します。<br>
-以下コードを実行します。<br>
-
-
-作業用ディレクトリの作成と移動<br>
-```bash
-mkdir dockertest
-cd dockertest
-```
-
-
-compose.ymlの作成を作成<br>
-```bash
-vim compose.yml
-```
-
-内容<br>
-
-<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml>
-
-
-  起動をします。<br>
+起動をします。<br>
 ```bash
 docker compose up
 ```
-
-
-起動をさせたまま次のステップに進みます。
-
-<br>
-
 ---
-6.nginxを使用しWebに配信する。<br>
-  設定ファイル用のディレクトリ・ファイル・内容の作成をします。<br>
-  以下コードを実行します。<br>
-
-
-  設定ファイル用のディレクトリ<br>
-```bash
-mkdir nginx
-mkdir nginx/conf.d
-```
-
-
-  設定ファイルを作成<br>
-```bash
-vim nginx/conf.d/default.conf
-```
-
-
-  内容<br>
-```bash
-server {
-    listen       0.0.0.0:80;
-    server_name  _;
-    charset      utf-8;
-
-    root /var/www/public;
-
-    location ~ \.php$ {
-        fastcgi_pass  php:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include       fastcgi_params;
-    }
-
-    location /image/ {
-        root /var/www/upload;
-    }
-}
-```
-
-
----
-7.dockerを再起動します。<br>
-  起動したままの場合はctrl+cで終了させ、以下コードを実行します。<br>
-```bash
-docker compose up
-```
-
-<br>
-
----
-8.MySQLサーバーにmysqlコマンドで接続します。<br>
-  以下コードを実行します。<br>
-```bash
-vim Dockerfile
-```
-
-
-  内容<br>
-<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/Dockerfile>
-
-
-<br>
-
----
-9.掲示板サイトのファイルを作成します。<br>
-  以下コードを実行します。<br>
-```bash
-vim public/bbsimagetest.php
-```
-
-
-  内容<br>
-<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/public/bbsimagetest.php>
-
-
----
-10.PHPからMySQLサーバーに接続します。<br>
+4.PHPからMySQLサーバーに接続します。<br>
   以下コードを実行します。<br>
 ```bash
 docker compose exec mysql mysql example_db
@@ -228,7 +65,7 @@ docker compose exec mysql mysql example_db
 <br>
 
 ---
-11.テーブルを作成し、カラムを追加します。<br>
+5.テーブルを作成し、カラムを追加します。<br>
   以下コードを実行します。<br>
 ```bash
 CREATE TABLE `bbs_entries` (
@@ -246,7 +83,7 @@ ALTER TABLE `bbs_entries` ADD COLUMN image_filename TEXT DEFAULT NULL;
 <br>
 
 ---
-12.WebブラウザからサイトのURLを検索します。<br>
+6.WebブラウザからサイトのURLを検索します。<br>
 ```bash
 http://”ec2インスタンスのパブリックIPアドレス”/bbsimagetest.php
 ```
