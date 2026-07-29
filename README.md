@@ -10,10 +10,15 @@ sudo yum install vim -y
 <br>
 
 ---
-2.screenをインストールします。<br>
+2.screenをインストールし、screen内に移動します。<br>
   以下コードを実行します。<br>
 ```bash
 sudo yum install screen -y
+```
+
+
+```bash
+screen
 ```
 
 
@@ -53,6 +58,30 @@ docker compose version
 
 v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです。<br>
 
+---
+
+
+5.作業用ディレクトリ・compose.ymlを作成し起動します。<br>
+以下コードを実行します。<br>
+
+
+作業用ディレクトリの作成と移動<br>
+```bash
+mkdir dockertest
+cd dockertest
+```
+
+
+compose.ymlの作成を作成<br>
+```bash
+vim compose.yml
+```
+
+内容<br>
+
+<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml>
+
+
   起動をします。<br>
 ```bash
 docker compose up
@@ -64,7 +93,7 @@ docker compose up
 <br>
 
 ---
-5.nginxを使用しWebに配信する。<br>
+6.nginxを使用しWebに配信する。<br>
   設定ファイル用のディレクトリ・ファイル・内容の作成をします。<br>
   以下コードを実行します。<br>
 
@@ -103,19 +132,6 @@ server {
     }
 }
 ```
-
-
----
-6.compose.yml編集します。<br>
-  以下コードを実行します。<br>
-```bash
-vim compose.yml
-```
-
-
-内容<br>
-
-<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml>
 
 
 ---
