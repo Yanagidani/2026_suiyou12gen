@@ -114,9 +114,8 @@ vim compose.yml
 
 
 内容<br>
-```
-https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml
-```
+
+<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/compose.yml>
 
 
 ---
@@ -137,9 +136,7 @@ vim Dockerfile
 
 
   内容<br>
-```
-https://github.com/Yanagidani/2026_suiyou12gen/blob/main/Dockerfile
-```
+<https://github.com/Yanagidani/2026_suiyou12gen/blob/main/Dockerfile>
 
 
 <br>
