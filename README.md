@@ -83,9 +83,8 @@ vim nginx/conf.d/default.conf
 
 
   内容<br>
-```bash
+
 リポジトリ内の内容を張り付け
-```
 
 
 ---
@@ -96,7 +95,7 @@ vim compose.yml
 ```
 
 
-
+内容<br>
 リポジトリ内の内容を張り付け
 
 
