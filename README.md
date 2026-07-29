@@ -7,11 +7,13 @@
 
 <br>
 
+
 2.screenをインストールします。<br>
   以下コードを実行します。<br>
 `sudo yum install screen -y`
 
 <br>
+
 
 3.Dockerのインストールと自動起動化をします。<br>
   以下コードを実行します。<br>
@@ -20,10 +22,14 @@ sudo yum install -y docker
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
-  デフォルトのユーザーをdockerグループに追加します。<br>
+
+
+デフォルトのユーザーをdockerグループに追加します。<br>
 `sudo usermod -a -G docker ec2-user`
 
 <br>
+
+
 
 4.Docker Composeをインストールします。<br>
   以下コードを実行します。<br>
@@ -33,15 +39,22 @@ mkdir -p $DOCKER_CONFIG/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v5.1.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 ```
-  インストールできたかの確認をします。<br>
+
+
+インストールできたかの確認をします。<br>
 `docker compose version`
-  v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです。<br>
+
+
+v0.34.1 もしくはそれ以上のバージョンが表示されたらOKです。<br>
 
   起動をします。<br>
 `docker compose up`
-  起動をさせたまま次のステップに進みます。
+
+
+起動をさせたまま次のステップに進みます。
 
 <br>
+
 
 5.nginxを使用しWebに配信する。<br>
   設定ファイル用のディレクトリ・ファイル・内容の作成をします。<br>
@@ -53,6 +66,8 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 mkdir nginx
 mkdir nginx/conf.d
 ```
+
+
 <br>
   設定ファイルを作成<br>
 `vim nginx/conf.d/default.conf`
