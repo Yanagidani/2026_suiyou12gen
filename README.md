@@ -10,7 +10,7 @@ sudo yum install vim -y
 <br>
 
 ---
-2.screenをインストールし、screen内に移動します。<br>
+2.screenをインストールし・screenの移動と仕様を変更します。<br>
   以下コードを実行します。<br>
 ```bash
 sudo yum install screen -y
@@ -21,6 +21,53 @@ sudo yum install screen -y
 screen
 ```
 
+
+  screenの仕様を変更します。<br>
+```bash
+vim ~/.vimrc
+```
+
+
+  内容<br>
+```bash
+
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set autoindent
+
+set fenc=utf-8
+set nobackup
+set noswapfile
+
+set autoread
+set hidden
+set showcmd
+
+set cursorline
+set cursorcolumn
+set virtualedit=onemore
+set smartindent
+set showmatch
+set laststatus=2
+set wildmode=list:longest
+
+nnoremap j gj
+nnoremap k gk
+
+syntax enable
+
+set list listchars=tab:\▶\-
+
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set hlsearch
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+```
 
 ---
 3.Dockerのインストールと自動起動化をします。<br>
