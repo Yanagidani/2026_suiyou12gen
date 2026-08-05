@@ -20,7 +20,7 @@ sudo yum install screen -y
 ```
   ファイルの移動をします。<br>
 ```bash
-cd dockertest
+cd 2026_suiyou12gen
 ```
   screenを起動します。<br>
 
